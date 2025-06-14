@@ -1,0 +1,243 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('Contact Us') }} - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">{{ _('Contact Us') }}</h1>
+            <p class="lead mb-4">
+                {{ _('Have questions, suggestions, or want to learn more about e3rafbaladak? We'd love to hear from you!') }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Contact Information -->
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h3 class="card-title mb-4">{{ _('Get in Touch') }}</h3>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>{{ _('Address') }}</h5>
+                            <p class="mb-0">123 {{ _('Education Street') }}<br>{{ _('Cairo, Egypt') }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-envelope fa-2x text-primary"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>{{ _('Email') }}</h5>
+                            <p class="mb-0"><a href="mailto:info@e3rafbaladak.com" class="text-decoration-none">info@e3rafbaladak.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-phone fa-2x text-primary"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>{{ _('Phone') }}</h5>
+                            <p class="mb-0"><a href="tel:+20123456789" class="text-decoration-none">+20 123 456 789</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-clock fa-2x text-primary"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5>{{ _('Working Hours') }}</h5>
+                            <p class="mb-0">{{ _('Sunday - Thursday: 9:00 AM - 5:00 PM') }}<br>{{ _('Friday - Saturday: Closed') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="card-title mb-4">{{ _('Send Us a Message') }}</h3>
+                    
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <form method="POST" action="{{ url_for('main.contact') }}" class="needs-validation" novalidate>
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.name(class="form-control", placeholder="Your Name", id="name") }}
+                                    <label for="name">{{ _('Your Name') }}</label>
+                                    {% if form.name.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.name.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.email(class="form-control", placeholder="Your Email", id="email") }}
+                                    <label for="email">{{ _('Your Email') }}</label>
+                                    {% if form.email.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.email.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    {{ form.subject(class="form-control", placeholder="Subject", id="subject") }}
+                                    <label for="subject">{{ _('Subject') }}</label>
+                                    {% if form.subject.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.subject.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    {{ form.message(class="form-control", style="height: 150px", placeholder="Message", id="message") }}
+                                    <label for="message">{{ _('Message') }}</label>
+                                    {% if form.message.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.message.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>{{ _('Send Message') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Map Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-21x9">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.76983794965!2d31.18390205!3d30.059482450000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1656531024121!5m2!1sen!2seg" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="row mt-5">
+        <div class="col-lg-10 mx-auto">
+            <h2 class="text-center mb-4">{{ _('Frequently Asked Questions') }}</h2>
+            
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            {{ _('How can my school participate in e3rafbaladak?') }}
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {{ _('Schools can participate by registering through our platform. Once registered, you will be assigned a school coordinator account that can manage activities, reports, and volunteer coordination for your school.') }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            {{ _('What kind of activities does e3rafbaladak offer?') }}
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {{ _('We offer a variety of activities including field trips to historical and cultural sites, workshops, competitions, guest lectures, and digital learning resources. All activities are designed to enhance students' knowledge about their country.') }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            {{ _('How can I volunteer with e3rafbaladak?') }}
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {{ _('You can register as a volunteer through our platform. We welcome individuals with various skills including teaching, content creation, event organization, and more. After registration, you will be matched with schools based on your skills and availability.') }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            {{ _('Is there a cost for schools to participate?') }}
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {{ _('No, participation in the e3rafbaladak initiative is free for all schools. Our goal is to make quality educational resources about our country accessible to all students regardless of their school's resources.') }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            {{ _('Can I contribute content to the platform?') }}
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {{ _('Yes, we welcome content contributions from educators, experts, and enthusiasts. You can submit articles, media, or quiz questions through our platform. All submissions are reviewed by our content team before publication.') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

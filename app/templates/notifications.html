@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('Notifications') }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <div class="mb-3">
+                    <img src="{{ url_for('static', filename='images/default-avatar.png') }}" alt="{{ current_user.username }}" class="rounded-circle img-fluid" style="width: 150px;">
+                </div>
+                <h5 class="card-title">{{ current_user.username }}</h5>
+                <p class="text-muted">{{ current_user.role | capitalize }}</p>
+                <p class="text-muted small">
+                    <i class="fas fa-envelope"></i> {{ current_user.email }}<br>
+                    <i class="fas fa-clock"></i> {{ _('Member since') }}: {{ current_user.created_at.strftime('%Y-%m-%d') }}
+                </p>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{{ url_for('auth.profile') }}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user"></i> {{ _('Profile Settings') }}
+                </a>
+                <a href="{{ url_for('auth.notifications') }}" class="list-group-item list-group-item-action active">
+                    <i class="fas fa-bell"></i> {{ _('Notifications') }}
+                </a>
+                {% if current_user.is_school_coordinator() %}
+                <a href="{{ url_for('school.school_detail', id=current_user.school_id) }}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-school"></i> {{ _('My School') }}
+                </a>
+                {% endif %}
+                {% if current_user.is_volunteer() %}
+                <a href="{{ url_for('volunteer.volunteer_detail', id=current_user.volunteer.id) }}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-hands-helping"></i> {{ _('My Volunteer Profile') }}
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notifications List -->
+    <div class="col-md-9">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">{{ _('Notifications') }}</h4>
+            </div>
+            <div class="card-body">
+                {% if notifications.items %}
+                    <div class="list-group">
+                        {% for notification in notifications.items %}
+                            <div class="list-group-item list-group-item-action{% if not notification.is_read %} bg-light{% endif %}">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">
+                                        {% if notification.category == 'info' %}
+                                            <i class="fas fa-info-circle text-info"></i>
+                                        {% elif notification.category == 'success' %}
+                                            <i class="fas fa-check-circle text-success"></i>
+                                        {% elif notification.category == 'warning' %}
+                                            <i class="fas fa-exclamation-triangle text-warning"></i>
+                                        {% elif notification.category == 'danger' %}
+                                            <i class="fas fa-exclamation-circle text-danger"></i>
+                                        {% else %}
+                                            <i class="fas fa-bell text-primary"></i>
+                                        {% endif %}
+                                        {{ notification.title }}
+                                    </h5>
+                                    <small class="text-muted">{{ notification.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                                </div>
+                                <p class="mb-1">{{ notification.message }}</p>
+                                {% if notification.link %}
+                                    <small>
+                                        <a href="{{ notification.link }}">{{ _('View details') }}</a>
+                                    </small>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Pagination -->
+                    {% if notifications.pages > 1 %}
+                    <nav aria-label="Notification pagination" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            {% if notifications.has_prev %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('auth.notifications', page=notifications.prev_num) }}">
+                                        &laquo; {{ _('Previous') }}
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">&laquo; {{ _('Previous') }}</span>
+                                </li>
+                            {% endif %}
+                            
+                            {% for page_num in notifications.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+                                {% if page_num %}
+                                    {% if page_num == notifications.page %}
+                                        <li class="page-item active">
+                                            <span class="page-link">{{ page_num }}</span>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="{{ url_for('auth.notifications', page=page_num) }}">{{ page_num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if notifications.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('auth.notifications', page=notifications.next_num) }}">
+                                        {{ _('Next') }} &raquo;
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">{{ _('Next') }} &raquo;</span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-bell-slash fa-4x text-muted mb-3"></i>
+                        <h5>{{ _('No notifications yet') }}</h5>
+                        <p class="text-muted">{{ _('You will see notifications here when there are updates or actions related to your account.') }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

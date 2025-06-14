@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}" dir="{{ 'rtl' if lang == 'ar' else 'ltr' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('Thank You for Volunteering') }} | e3rafbaladak</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* RTL Support */
+        .rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        .header {
+            background-color: #0d6efd;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        /* Content */
+        .content {
+            padding: 30px;
+        }
+        
+        .content h2 {
+            color: #0d6efd;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .content p {
+            margin-bottom: 15px;
+        }
+        
+        /* Details Box */
+        .details-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .rtl .details-box {
+            border-left: none;
+            border-right: 4px solid #0d6efd;
+        }
+        
+        .details-box h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #0d6efd;
+            font-size: 18px;
+        }
+        
+        .details-box p {
+            margin: 5px 0;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #0d6efd;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .social-links {
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 5px;
+            color: #0d6efd;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container{% if lang == 'ar' %} rtl{% endif %}">
+        <div class="header">
+            <img src="{{ logo_url }}" alt="e3rafbaladak Logo">
+            <h1>{{ _('Thank You for Volunteering!') }}</h1>
+        </div>
+        
+        <div class="content">
+            <h2>{{ _('Dear') }} {{ volunteer.name }},</h2>
+            
+            <p>{{ _('Thank you for registering as a volunteer with the "اعرف بلدك" (Know Your Country) initiative. Your commitment to helping educate students about our country is greatly appreciated.') }}</p>
+            
+            <p>{{ _('Your volunteer application has been received and is being processed. You will be notified once your application has been reviewed.') }}</p>
+            
+            <div class="details-box">
+                <h3>{{ _('Your Registration Details:') }}</h3>
+                <p><strong>{{ _('Name:') }}</strong> {{ volunteer.name }}</p>
+                <p><strong>{{ _('Email:') }}</strong> {{ volunteer.email }}</p>
+                <p><strong>{{ _('Phone:') }}</strong> {{ volunteer.phone }}</p>
+                <p><strong>{{ _('School:') }}</strong> {{ volunteer.school.name }}</p>
+                <p><strong>{{ _('Skills:') }}</strong> {{ volunteer.skills }}</p>
+                <p><strong>{{ _('Registration Date:') }}</strong> {{ volunteer.created_at.strftime('%Y-%m-%d') }}</p>
+            </div>
+            
+            <p>{{ _('As a volunteer, you will have the opportunity to participate in various activities and contribute to the success of our national educational initiative.') }}</p>
+            
+            <p>{{ _('If you have any questions or need further information, please don\'t hesitate to contact us at support@e3rafbaladak.com.') }}</p>
+            
+            <p>{{ _('We look forward to your valuable contribution!') }}</p>
+            
+            <a href="{{ url_for('main.index', _external=True) }}" class="btn">{{ _('Visit Our Website') }}</a>
+        </div>
+        
+        <div class="footer">
+            <p>© {{ current_year }} e3rafbaladak.com. {{ _('All rights reserved.') }}</p>
+            <p>{{ _('This email was sent to you because you registered as a volunteer with the "اعرف بلدك" initiative.') }}</p>
+            
+            <div class="social-links">
+                <a href="#">Facebook</a> |
+                <a href="#">Twitter</a> |
+                <a href="#">Instagram</a> |
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

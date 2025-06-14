@@ -1,0 +1,196 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('Frequently Asked Questions') }} - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">{{ _('Frequently Asked Questions') }}</h1>
+            <p class="lead mb-4">
+                {{ _('Find answers to common questions about the e3rafbaladak initiative, participation, and resources.') }}
+            </p>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <form action="{{ url_for('main.faq') }}" method="GET" class="d-flex">
+                        <input type="text" name="q" class="form-control form-control-lg" placeholder="{{ _('Search FAQs...') }}" value="{{ request.args.get('q', '') }}">
+                        <button type="submit" class="btn btn-primary ms-2">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Categories -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <div class="btn-group btn-group-lg flex-wrap" role="group" aria-label="FAQ Categories">
+                <a href="{{ url_for('main.faq') }}" class="btn {% if not category %}btn-primary{% else %}btn-outline-primary{% endif %} m-1">{{ _('All') }}</a>
+                <a href="{{ url_for('main.faq', category='general') }}" class="btn {% if category == 'general' %}btn-primary{% else %}btn-outline-primary{% endif %} m-1">{{ _('General') }}</a>
+                <a href="{{ url_for('main.faq', category='schools') }}" class="btn {% if category == 'schools' %}btn-primary{% else %}btn-outline-primary{% endif %} m-1">{{ _('For Schools') }}</a>
+                <a href="{{ url_for('main.faq', category='volunteers') }}" class="btn {% if category == 'volunteers' %}btn-primary{% else %}btn-outline-primary{% endif %} m-1">{{ _('For Volunteers') }}</a>
+                <a href="{{ url_for('main.faq', category='content') }}" class="btn {% if category == 'content' %}btn-primary{% else %}btn-outline-primary{% endif %} m-1">{{ _('Content & Resources') }}</a>
+                <a href="{{ url_for('main.faq', category='technical') }}" class="btn {% if category == 'technical' %}btn-primary{% else %}btn-outline-primary{% endif %} m-1">{{ _('Technical') }}</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            {% if faqs %}
+                <div class="accordion" id="faqAccordion">
+                    {% for faq in faqs %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ loop.index }}">
+                                <button class="accordion-button {% if not loop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ loop.index }}">
+                                    <span class="badge bg-{{ faq.category_color }} me-2">{{ _(faq.category) }}</span>
+                                    {{ faq.question }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ loop.index }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    {{ faq.answer|safe }}
+                                    
+                                    {% if faq.related_links %}
+                                        <div class="mt-3">
+                                            <strong>{{ _('Related Links:') }}</strong>
+                                            <ul class="list-unstyled mt-2">
+                                                {% for link in faq.related_links %}
+                                                    <li>
+                                                        <a href="{{ link.url }}" class="text-decoration-none">
+                                                            <i class="fas fa-external-link-alt me-2"></i>{{ link.title }}
+                                                        </a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                                        <div>
+                                            <small class="text-muted">{{ _('Last updated:') }} {{ faq.updated_at|date }}</small>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('{{ url_for('main.faq', faq_id=faq.id, _external=True) }}')">
+                                                <i class="fas fa-link me-1"></i>{{ _('Copy Link') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle fa-2x mb-3"></i>
+                    <h4>{{ _('No FAQs Found') }}</h4>
+                    <p>{{ _('No FAQs match your search criteria. Please try a different search term or category.') }}</p>
+                </div>
+            {% endif %}
+            
+            <!-- Pagination -->
+            {% if pagination and pagination.pages > 1 %}
+                <nav aria-label="FAQ pagination" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        {% if pagination.has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('main.faq', page=pagination.prev_num, q=request.args.get('q', ''), category=category) }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for page in pagination.iter_pages() %}
+                            {% if page %}
+                                <li class="page-item {% if page == pagination.page %}active{% endif %}">
+                                    <a class="page-link" href="{{ url_for('main.faq', page=page, q=request.args.get('q', ''), category=category) }}">{{ page }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#">...</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if pagination.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('main.faq', page=pagination.next_num, q=request.args.get('q', ''), category=category) }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Still Have Questions Section -->
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <h3 class="mb-4">{{ _('Still Have Questions?') }}</h3>
+                    <p class="mb-4">{{ _('If you couldn\'t find the answer to your question, please feel free to contact us directly.') }}</p>
+                    <a href="{{ url_for('main.contact') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i>{{ _('Contact Us') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Copy to Clipboard Script -->
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            // Show a temporary tooltip
+            const tooltip = document.createElement('div');
+            tooltip.textContent = '{{ _('Link copied!') }}';
+            tooltip.style.position = 'fixed';
+            tooltip.style.bottom = '20px';
+            tooltip.style.left = '50%';
+            tooltip.style.transform = 'translateX(-50%)';
+            tooltip.style.padding = '10px 20px';
+            tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            tooltip.style.color = 'white';
+            tooltip.style.borderRadius = '5px';
+            tooltip.style.zIndex = '9999';
+            
+            document.body.appendChild(tooltip);
+            
+            setTimeout(function() {
+                tooltip.style.opacity = '0';
+                tooltip.style.transition = 'opacity 0.5s';
+                setTimeout(function() {
+                    document.body.removeChild(tooltip);
+                }, 500);
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}

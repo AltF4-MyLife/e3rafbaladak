@@ -1,0 +1,212 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('About Us') }} - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">{{ _('About e3rafbaladak') }}</h1>
+            <p class="lead mb-4">
+                {{ _('A national initiative to educate students about their country through interactive learning experiences, school activities, and volunteer engagement.') }}
+            </p>
+        </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="row mb-5">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-bullseye fa-3x text-primary"></i>
+                    </div>
+                    <h3 class="card-title text-center mb-3">{{ _('Our Mission') }}</h3>
+                    <p class="card-text">
+                        {{ _('To foster a deeper understanding and appreciation of our country among students through engaging educational activities, community involvement, and digital resources that highlight our history, culture, geography, and achievements.') }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-eye fa-3x text-primary"></i>
+                    </div>
+                    <h3 class="card-title text-center mb-3">{{ _('Our Vision') }}</h3>
+                    <p class="card-text">
+                        {{ _('To create a generation of informed, engaged citizens who are proud of their national identity and heritage, equipped with knowledge about their country, and motivated to contribute positively to its future development and prosperity.') }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Story -->
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto">
+            <h2 class="text-center mb-4">{{ _('Our Story') }}</h2>
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <p class="mb-3">
+                        {{ _('The e3rafbaladak initiative was born from a simple observation: many students graduate without a comprehensive understanding of their own country. We believe that knowing about our nation's geography, history, culture, and achievements is fundamental to developing a sense of belonging and national pride.') }}
+                    </p>
+                    <p class="mb-3">
+                        {{ _('Started in 2023 by a group of educators and community leaders, our initiative aims to bridge this knowledge gap by creating a platform that connects schools, volunteers, and educational content in one ecosystem.') }}
+                    </p>
+                    <p>
+                        {{ _('Today, e3rafbaladak works with schools across the country, engaging thousands of students through various activities, field trips, and digital resources. Our network of dedicated volunteers brings expertise and passion to the program, while our content library continues to grow with articles, media, and interactive quizzes.') }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Values -->
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto">
+            <h2 class="text-center mb-4">{{ _('Our Values') }}</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <i class="fas fa-book fa-2x text-primary mb-3"></i>
+                            <h4 class="card-title">{{ _('Education') }}</h4>
+                            <p class="card-text">
+                                {{ _('We believe in the power of knowledge and lifelong learning as the foundation for informed citizenship.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <i class="fas fa-hands-helping fa-2x text-primary mb-3"></i>
+                            <h4 class="card-title">{{ _('Community') }}</h4>
+                            <p class="card-text">
+                                {{ _('We foster collaboration between schools, volunteers, and communities to create meaningful learning experiences.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <i class="fas fa-flag fa-2x text-primary mb-3"></i>
+                            <h4 class="card-title">{{ _('National Pride') }}</h4>
+                            <p class="card-text">
+                                {{ _('We promote a healthy sense of national identity and pride based on knowledge and understanding.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <i class="fas fa-lightbulb fa-2x text-primary mb-3"></i>
+                            <h4 class="card-title">{{ _('Innovation') }}</h4>
+                            <p class="card-text">
+                                {{ _('We embrace creative and interactive approaches to make learning engaging and effective.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <i class="fas fa-universal-access fa-2x text-primary mb-3"></i>
+                            <h4 class="card-title">{{ _('Inclusivity') }}</h4>
+                            <p class="card-text">
+                                {{ _('We ensure our programs and content are accessible to all students regardless of background or location.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <i class="fas fa-handshake fa-2x text-primary mb-3"></i>
+                            <h4 class="card-title">{{ _('Responsibility') }}</h4>
+                            <p class="card-text">
+                                {{ _('We promote responsible citizenship and encourage students to contribute positively to society.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team -->
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto">
+            <h2 class="text-center mb-4">{{ _('Our Team') }}</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <img src="{{ url_for('static', filename='img/team/team1.jpg') }}" alt="Team Member" class="rounded-circle mb-3" width="150" height="150">
+                            <h4 class="card-title">{{ _('Ahmed Hassan') }}</h4>
+                            <p class="text-muted">{{ _('Founder & Director') }}</p>
+                            <p class="card-text">
+                                {{ _('Former educator with 15 years of experience in developing educational programs.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <img src="{{ url_for('static', filename='img/team/team2.jpg') }}" alt="Team Member" class="rounded-circle mb-3" width="150" height="150">
+                            <h4 class="card-title">{{ _('Fatima Ali') }}</h4>
+                            <p class="text-muted">{{ _('Education Coordinator') }}</p>
+                            <p class="card-text">
+                                {{ _('Curriculum development specialist with a passion for interactive learning methods.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <img src="{{ url_for('static', filename='img/team/team3.jpg') }}" alt="Team Member" class="rounded-circle mb-3" width="150" height="150">
+                            <h4 class="card-title">{{ _('Omar Mahmoud') }}</h4>
+                            <p class="text-muted">{{ _('Volunteer Program Manager') }}</p>
+                            <p class="card-text">
+                                {{ _('Community organizer who has built and managed volunteer networks for various initiatives.') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card bg-primary text-white border-0 shadow">
+                <div class="card-body p-5 text-center">
+                    <h2 class="mb-3">{{ _('Join Our Initiative') }}</h2>
+                    <p class="lead mb-4">
+                        {{ _('Whether you're a school looking to participate, a volunteer wanting to contribute, or someone interested in our educational content, we welcome you to be part of e3rafbaladak.') }}
+                    </p>
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                        <a href="{{ url_for('schools.register') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-school me-2"></i>{{ _('Register Your School') }}
+                        </a>
+                        <a href="{{ url_for('volunteers.register') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-hands-helping me-2"></i>{{ _('Become a Volunteer') }}
+                        </a>
+                        <a href="{{ url_for('main.contact') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-envelope me-2"></i>{{ _('Contact Us') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

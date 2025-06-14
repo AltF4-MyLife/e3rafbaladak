@@ -1,0 +1,247 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('Terms of Service') }} - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">{{ _('Terms of Service') }}</h1>
+            <p class="lead mb-4">
+                {{ _('Last Updated: June 1, 2023') }}
+            </p>
+        </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="mb-3">{{ _('Table of Contents') }}</h4>
+                    <ol class="toc-list">
+                        <li><a href="#acceptance" class="text-decoration-none">{{ _('Acceptance of Terms') }}</a></li>
+                        <li><a href="#changes" class="text-decoration-none">{{ _('Changes to Terms') }}</a></li>
+                        <li><a href="#access" class="text-decoration-none">{{ _('Access and Account Security') }}</a></li>
+                        <li><a href="#content" class="text-decoration-none">{{ _('User Content and Conduct') }}</a></li>
+                        <li><a href="#intellectual-property" class="text-decoration-none">{{ _('Intellectual Property Rights') }}</a></li>
+                        <li><a href="#third-party" class="text-decoration-none">{{ _('Third-Party Links and Services') }}</a></li>
+                        <li><a href="#disclaimer" class="text-decoration-none">{{ _('Disclaimer of Warranties') }}</a></li>
+                        <li><a href="#limitation" class="text-decoration-none">{{ _('Limitation of Liability') }}</a></li>
+                        <li><a href="#indemnification" class="text-decoration-none">{{ _('Indemnification') }}</a></li>
+                        <li><a href="#termination" class="text-decoration-none">{{ _('Termination') }}</a></li>
+                        <li><a href="#governing-law" class="text-decoration-none">{{ _('Governing Law') }}</a></li>
+                        <li><a href="#contact-us" class="text-decoration-none">{{ _('Contact Us') }}</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Content -->
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <section id="acceptance" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('1. Acceptance of Terms') }}</h2>
+                        <p>
+                            {{ _('Welcome to e3rafbaladak. By accessing or using our website, mobile application, or any of our services (collectively, the "Platform"), you agree to be bound by these Terms of Service ("Terms"). These Terms constitute a legally binding agreement between you and e3rafbaladak regarding your use of the Platform.') }}
+                        </p>
+                        <p>
+                            {{ _('If you are accessing or using the Platform on behalf of a school, organization, or other legal entity, you represent that you have the authority to bind such entity to these Terms. If you do not have such authority, or if you do not agree with these Terms, you must not access or use the Platform.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="changes" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('2. Changes to Terms') }}</h2>
+                        <p>
+                            {{ _('We reserve the right to modify these Terms at any time. If we make changes, we will provide notice by posting the updated Terms on the Platform and updating the "Last Updated" date. Your continued use of the Platform after any such changes constitutes your acceptance of the new Terms. If you do not agree to the modified Terms, you should discontinue your use of the Platform.') }}
+                        </p>
+                        <p>
+                            {{ _('We encourage you to review the Terms whenever you access or use the Platform to stay informed about our terms and conditions.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="access" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('3. Access and Account Security') }}</h2>
+                        <p>
+                            {{ _('To access certain features of the Platform, you may be required to register for an account. When you register, you agree to provide accurate, current, and complete information and to update such information to keep it accurate, current, and complete.') }}
+                        </p>
+                        <p>
+                            {{ _('You are responsible for safeguarding your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account or any other breach of security. We cannot and will not be liable for any loss or damage arising from your failure to comply with this section.') }}
+                        </p>
+                        <p>
+                            {{ _('We reserve the right to disable any user account at any time if, in our opinion, you have failed to comply with these Terms or if we suspect unauthorized or fraudulent use of your account.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="content" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('4. User Content and Conduct') }}</h2>
+                        <p>
+                            {{ _('Our Platform allows you to post, link, store, share, and otherwise make available certain information, text, graphics, videos, or other material ("User Content"). You are responsible for the User Content that you post on or through the Platform, including its legality, reliability, and appropriateness.') }}
+                        </p>
+                        <p>
+                            {{ _('By posting User Content on or through the Platform, you represent and warrant that:') }}
+                        </p>
+                        <ul>
+                            <li>{{ _('The User Content is yours or you have the right to use it and grant us the rights and license as provided in these Terms.') }}</li>
+                            <li>{{ _('The User Content does not violate the privacy rights, publicity rights, copyrights, contract rights, or any other rights of any person or entity.') }}</li>
+                            <li>{{ _('The User Content does not contain material that is false, intentionally misleading, defamatory, obscene, harassing, threatening, or otherwise unlawful.') }}</li>
+                        </ul>
+                        <p>
+                            {{ _('You agree not to engage in any of the following prohibited activities:') }}
+                        </p>
+                        <ul>
+                            <li>{{ _('Use the Platform in any manner that could disable, overburden, damage, or impair the Platform.') }}</li>
+                            <li>{{ _('Use any robot, spider, or other automatic device, process, or means to access the Platform for any purpose.') }}</li>
+                            <li>{{ _('Introduce any viruses, trojan horses, worms, logic bombs, or other harmful material.') }}</li>
+                            <li>{{ _('Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of the Platform.') }}</li>
+                            <li>{{ _('Use the Platform to advertise or offer to sell goods and services.') }}</li>
+                            <li>{{ _('Impersonate or attempt to impersonate e3rafbaladak, an e3rafbaladak employee, another user, or any other person or entity.') }}</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="intellectual-property" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('5. Intellectual Property Rights') }}</h2>
+                        <p>
+                            {{ _('The Platform and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by e3rafbaladak, its licensors, or other providers of such material and are protected by copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.') }}
+                        </p>
+                        <p>
+                            {{ _('Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, and revocable license to access and use the Platform for educational and non-commercial purposes.') }}
+                        </p>
+                        <p>
+                            {{ _('By submitting User Content to the Platform, you grant us a worldwide, non-exclusive, royalty-free, sublicensable, and transferable license to use, reproduce, distribute, prepare derivative works of, display, and perform the User Content in connection with the Platform and our business operations, including for promoting and redistributing part or all of the Platform.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="third-party" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('6. Third-Party Links and Services') }}</h2>
+                        <p>
+                            {{ _('The Platform may contain links to third-party websites or services that are not owned or controlled by e3rafbaladak. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that e3rafbaladak shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such websites or services.') }}
+                        </p>
+                        <p>
+                            {{ _('We strongly advise you to read the terms and conditions and privacy policies of any third-party websites or services that you visit.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="disclaimer" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('7. Disclaimer of Warranties') }}</h2>
+                        <p>
+                            {{ _('THE PLATFORM IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, E3RAFBALADAK DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.') }}
+                        </p>
+                        <p>
+                            {{ _('E3RAFBALADAK DOES NOT WARRANT THAT THE PLATFORM WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE, OR THAT ANY DEFECTS WILL BE CORRECTED. E3RAFBALADAK DOES NOT WARRANT OR MAKE ANY REPRESENTATIONS REGARDING THE USE OR THE RESULTS OF THE USE OF THE PLATFORM IN TERMS OF CORRECTNESS, ACCURACY, RELIABILITY, OR OTHERWISE.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="limitation" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('8. Limitation of Liability') }}</h2>
+                        <p>
+                            {{ _('TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL E3RAFBALADAK, ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE PLATFORM.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="indemnification" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('9. Indemnification') }}</h2>
+                        <p>
+                            {{ _('You agree to defend, indemnify, and hold harmless e3rafbaladak, its directors, employees, partners, agents, suppliers, and affiliates from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys\' fees) arising out of or relating to your violation of these Terms or your use of the Platform.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="termination" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('10. Termination') }}</h2>
+                        <p>
+                            {{ _('We may terminate or suspend your account and bar access to the Platform immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.') }}
+                        </p>
+                        <p>
+                            {{ _('Upon termination, your right to use the Platform will immediately cease. If you wish to terminate your account, you may simply discontinue using the Platform or contact us to request account deletion.') }}
+                        </p>
+                        <p>
+                            {{ _('All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="governing-law" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('11. Governing Law') }}</h2>
+                        <p>
+                            {{ _('These Terms shall be governed and construed in accordance with the laws of Egypt, without regard to its conflict of law provisions.') }}
+                        </p>
+                        <p>
+                            {{ _('Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="contact-us" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('12. Contact Us') }}</h2>
+                        <p>
+                            {{ _('If you have any questions about these Terms, please contact us at:') }}
+                        </p>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <p class="mb-1"><strong>{{ _('Email:') }}</strong> <a href="mailto:legal@e3rafbaladak.com">legal@e3rafbaladak.com</a></p>
+                                <p class="mb-1"><strong>{{ _('Address:') }}</strong> {{ _('123 Education Street, Cairo, Egypt') }}</p>
+                                <p class="mb-0"><strong>{{ _('Phone:') }}</strong> +20 123 456 789</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Print Button -->
+            <div class="text-center mb-5">
+                <button class="btn btn-outline-primary" onclick="window.print()">
+                    <i class="fas fa-print me-2"></i>{{ _('Print These Terms') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @media print {
+        .navbar, .footer, .btn, .toc-list {
+            display: none !important;
+        }
+        
+        body {
+            font-size: 12pt;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .card {
+            border: none !important;
+            box-shadow: none !important;
+        }
+        
+        h1 {
+            font-size: 24pt;
+            margin-bottom: 20pt;
+        }
+        
+        h2 {
+            font-size: 18pt;
+            margin-top: 15pt;
+        }
+        
+        h4 {
+            font-size: 14pt;
+        }
+    }
+    
+    .toc-list li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .toc-list a:hover {
+        text-decoration: underline !important;
+    }
+</style>
+{% endblock %}

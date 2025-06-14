@@ -1,0 +1,245 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('Home') }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section py-5 bg-primary text-white text-center rounded">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-lg-start">
+                <h1 class="display-4 fw-bold mb-4">{{ _('اعرف بلدك') }}</h1>
+                <h2 class="h3 mb-4">{{ _('Know Your Country') }}</h2>
+                <p class="lead mb-4">{{ _('A national initiative to educate students about their country through school activities, volunteering, and educational content.') }}</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center justify-content-lg-start">
+                    <a href="{{ url_for('content.article_list') }}" class="btn btn-light btn-lg px-4 me-sm-3">{{ _('Explore Content') }}</a>
+                    <a href="{{ url_for('volunteer.volunteer_register') }}" class="btn btn-outline-light btn-lg px-4">{{ _('Volunteer Now') }}</a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <img src="{{ url_for('static', filename='images/hero-image.svg') }}" alt="{{ _('Know Your Country') }}" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-school fa-3x text-primary mb-3"></i>
+                        <h3 class="counter">{{ school_count }}</h3>
+                        <p class="text-muted">{{ _('Participating Schools') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-success mb-3"></i>
+                        <h3 class="counter">{{ volunteer_count }}</h3>
+                        <p class="text-muted">{{ _('Student Volunteers') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-book-open fa-3x text-info mb-3"></i>
+                        <h3 class="counter">{{ article_count }}</h3>
+                        <p class="text-muted">{{ _('Educational Articles') }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-photo-video fa-3x text-warning mb-3"></i>
+                        <h3 class="counter">{{ media_count }}</h3>
+                        <p class="text-muted">{{ _('Media Uploads') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Content Section -->
+<section class="featured-content py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="section-title">{{ _('Featured Content') }}</h2>
+                <p class="text-muted">{{ _('Explore our latest educational articles and resources') }}</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for article in featured_articles %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    {% if article.featured_image %}
+                    <img src="{{ url_for('static', filename='uploads/articles/' + article.featured_image) }}" class="card-img-top" alt="{{ article.title }}">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/article-placeholder.jpg') }}" class="card-img-top" alt="{{ article.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text text-muted small">
+                            <i class="fas fa-tag"></i> {{ article.category }}
+                            <span class="ms-2"><i class="fas fa-calendar"></i> {{ article.published_at.strftime('%Y-%m-%d') }}</span>
+                        </p>
+                        <p class="card-text">{{ article.summary }}</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="{{ url_for('content.article_view', slug=article.slug) }}" class="btn btn-sm btn-primary">{{ _('Read More') }}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ url_for('content.article_list') }}" class="btn btn-outline-primary">{{ _('View All Articles') }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Schools Section -->
+<section class="featured-schools py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="section-title">{{ _('Participating Schools') }}</h2>
+                <p class="text-muted">{{ _('Schools actively involved in the initiative') }}</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for school in featured_schools %}
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    {% if school.logo %}
+                    <img src="{{ url_for('static', filename='uploads/schools/' + school.logo) }}" class="card-img-top p-3" alt="{{ school.name }}">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/school-placeholder.png') }}" class="card-img-top p-3" alt="{{ school.name }}">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ school.name }}</h5>
+                        <p class="card-text text-muted"><i class="fas fa-map-marker-alt"></i> {{ school.location }}</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <a href="{{ url_for('school.school_detail', id=school.id) }}" class="btn btn-sm btn-outline-primary">{{ _('View Details') }}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ url_for('school.schools_list') }}" class="btn btn-outline-primary">{{ _('View All Schools') }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Media Section -->
+<section class="recent-media py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="section-title">{{ _('Student Media Gallery') }}</h2>
+                <p class="text-muted">{{ _('Showcasing creative work from our student volunteers') }}</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for media in recent_media %}
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    {% if media.media_type == 'image' %}
+                        {% if media.thumbnail_path %}
+                        <img src="{{ url_for('static', filename='uploads/media/' + media.thumbnail_path) }}" class="card-img-top" alt="{{ media.title }}">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='uploads/media/' + media.file_path) }}" class="card-img-top" alt="{{ media.title }}">
+                        {% endif %}
+                    {% elif media.media_type == 'video' %}
+                        <div class="card-img-top position-relative">
+                            <img src="{{ url_for('static', filename='images/video-placeholder.jpg') }}" class="w-100" alt="{{ media.title }}">
+                            <div class="position-absolute top-50 start-50 translate-middle">
+                                <i class="fas fa-play-circle fa-3x text-white"></i>
+                            </div>
+                        </div>
+                    {% elif media.media_type == 'document' %}
+                        <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 150px;">
+                            <i class="fas fa-file-alt fa-4x text-primary"></i>
+                        </div>
+                    {% else %}
+                        <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 150px;">
+                            <i class="fas fa-link fa-4x text-primary"></i>
+                        </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ media.title }}</h5>
+                        <p class="card-text text-muted small">
+                            <i class="fas fa-user"></i> {{ media.user.username }}
+                            <span class="ms-2"><i class="fas fa-calendar"></i> {{ media.created_at.strftime('%Y-%m-%d') }}</span>
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="{{ url_for('content.media_detail', id=media.id) }}" class="btn btn-sm btn-primary">{{ _('View Media') }}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ url_for('content.media_list') }}" class="btn btn-outline-primary">{{ _('View All Media') }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section py-5 bg-primary text-white text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">{{ _('Join Our Initiative Today!') }}</h2>
+                <p class="lead mb-4">{{ _('Become a volunteer and contribute to educating the next generation about our country.') }}</p>
+                <a href="{{ url_for('volunteer.volunteer_register') }}" class="btn btn-light btn-lg">{{ _('Register as a Volunteer') }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Simple counter animation for stats
+    document.addEventListener('DOMContentLoaded', function() {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const target = +counter.innerText;
+            const increment = target / speed;
+            let count = 0;
+            
+            const updateCount = () => {
+                if(count < target) {
+                    count += increment;
+                    counter.innerText = Math.ceil(count);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            updateCount();
+        });
+    });
+</script>
+{% endblock %}

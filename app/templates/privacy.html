@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('Privacy Policy') }} - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">{{ _('Privacy Policy') }}</h1>
+            <p class="lead mb-4">
+                {{ _('Last Updated: June 1, 2023') }}
+            </p>
+        </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="mb-3">{{ _('Table of Contents') }}</h4>
+                    <ol class="toc-list">
+                        <li><a href="#introduction" class="text-decoration-none">{{ _('Introduction') }}</a></li>
+                        <li><a href="#information-we-collect" class="text-decoration-none">{{ _('Information We Collect') }}</a></li>
+                        <li><a href="#how-we-use-information" class="text-decoration-none">{{ _('How We Use Your Information') }}</a></li>
+                        <li><a href="#information-sharing" class="text-decoration-none">{{ _('Information Sharing and Disclosure') }}</a></li>
+                        <li><a href="#data-security" class="text-decoration-none">{{ _('Data Security') }}</a></li>
+                        <li><a href="#children-privacy" class="text-decoration-none">{{ _('Children\'s Privacy') }}</a></li>
+                        <li><a href="#your-rights" class="text-decoration-none">{{ _('Your Rights and Choices') }}</a></li>
+                        <li><a href="#changes" class="text-decoration-none">{{ _('Changes to This Privacy Policy') }}</a></li>
+                        <li><a href="#contact-us" class="text-decoration-none">{{ _('Contact Us') }}</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Content -->
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <section id="introduction" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('1. Introduction') }}</h2>
+                        <p>
+                            {{ _('Welcome to e3rafbaladak ("we," "our," or "us"). We are committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile application, or participate in our educational programs.') }}
+                        </p>
+                        <p>
+                            {{ _('Please read this Privacy Policy carefully. By accessing or using our Platform, you acknowledge that you have read, understood, and agree to be bound by all the terms of this Privacy Policy. If you do not agree with our policies and practices, please do not use our Platform.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="information-we-collect" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('2. Information We Collect') }}</h2>
+                        
+                        <h4 class="mb-3">{{ _('2.1 Information You Provide to Us') }}</h4>
+                        <p>
+                            {{ _('We collect information that you provide directly to us, including:') }}
+                        </p>
+                        <ul>
+                            <li>{{ _('Personal Information: When you register for an account, we collect your name, email address, password, and role (student, teacher, volunteer, administrator).') }}</li>
+                            <li>{{ _('Profile Information: You may provide additional information such as profile picture, biography, educational background, skills, interests, and contact information.') }}</li>
+                            <li>{{ _('School Information: For school accounts, we collect school name, address, contact details, and information about school administrators.') }}</li>
+                            <li>{{ _('Content: Information you provide when you participate in our programs, including comments, messages, feedback, survey responses, and content submissions.') }}</li>
+                            <li>{{ _('Communications: Records of your communications with us, including support requests and feedback.') }}</li>
+                        </ul>
+                        
+                        <h4 class="mb-3 mt-4">{{ _('2.2 Information We Collect Automatically') }}</h4>
+                        <p>
+                            {{ _('When you access or use our Platform, we may automatically collect certain information, including:') }}
+                        </p>
+                        <ul>
+                            <li>{{ _('Usage Information: We collect information about your interactions with our Platform, such as the pages or content you view, the features you use, and the actions you take.') }}</li>
+                            <li>{{ _('Device Information: We collect information about the device you use to access our Platform, including device type, operating system, browser type, and device identifiers.') }}</li>
+                            <li>{{ _('Log Information: We collect log information when you use our Platform, including access times, pages viewed, IP address, and the page you visited before navigating to our Platform.') }}</li>
+                            <li>{{ _('Cookies and Similar Technologies: We use cookies and similar technologies to collect information about your browsing behavior and preferences.') }}</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="how-we-use-information" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('3. How We Use Your Information') }}</h2>
+                        <p>
+                            {{ _('We use the information we collect for various purposes, including:') }}
+                        </p>
+                        <ul>
+                            <li>{{ _('Providing and improving our educational services and Platform') }}</li>
+                            <li>{{ _('Processing and managing your account registration') }}</li>
+                            <li>{{ _('Facilitating communication between schools, volunteers, and administrators') }}</li>
+                            <li>{{ _('Personalizing your experience and providing content recommendations') }}</li>
+                            <li>{{ _('Analyzing usage patterns and trends to improve our Platform') }}</li>
+                            <li>{{ _('Sending you technical notices, updates, security alerts, and administrative messages') }}</li>
+                            <li>{{ _('Responding to your comments, questions, and requests') }}</li>
+                            <li>{{ _('Monitoring and analyzing trends, usage, and activities in connection with our Platform') }}</li>
+                            <li>{{ _('Detecting, preventing, and addressing technical issues, fraud, or illegal activities') }}</li>
+                            <li>{{ _('Complying with legal obligations') }}</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="information-sharing" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('4. Information Sharing and Disclosure') }}</h2>
+                        <p>
+                            {{ _('We may share your information in the following circumstances:') }}
+                        </p>
+                        <ul>
+                            <li>{{ _('With Schools and Volunteers: To facilitate the educational programs and activities.') }}</li>
+                            <li>{{ _('With Service Providers: We may share your information with third-party vendors, consultants, and other service providers who need access to such information to carry out work on our behalf.') }}</li>
+                            <li>{{ _('For Legal Reasons: We may disclose your information if we believe it is necessary to comply with a legal obligation, protect and defend our rights or property, protect the safety of our users or the public, or prevent illegal activity.') }}</li>
+                            <li>{{ _('With Your Consent: We may share your information with third parties when you have given us your consent to do so.') }}</li>
+                            <li>{{ _('Business Transfers: If we are involved in a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of that transaction.') }}</li>
+                        </ul>
+                        <p>
+                            {{ _('We do not sell your personal information to third parties.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="data-security" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('5. Data Security') }}</h2>
+                        <p>
+                            {{ _('We take reasonable measures to help protect your personal information from loss, theft, misuse, unauthorized access, disclosure, alteration, and destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.') }}
+                        </p>
+                        <p>
+                            {{ _('You are responsible for maintaining the confidentiality of your account credentials and for restricting access to your device. If you believe your account has been compromised, please contact us immediately.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="children-privacy" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('6. Children\'s Privacy') }}</h2>
+                        <p>
+                            {{ _('Our Platform is designed for educational purposes and may be used by children under the age of 13 with appropriate supervision and consent from parents or guardians. We collect limited personal information from children and take additional steps to protect their privacy.') }}
+                        </p>
+                        <p>
+                            {{ _('For users under the age of 13, we require parental consent before collecting personal information. Parents or guardians can review, edit, request the deletion of their child\'s personal information, or refuse further collection by contacting us.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="your-rights" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('7. Your Rights and Choices') }}</h2>
+                        <p>
+                            {{ _('You have certain rights regarding your personal information:') }}
+                        </p>
+                        <ul>
+                            <li>{{ _('Access and Update: You can access and update certain information about you from your account settings.') }}</li>
+                            <li>{{ _('Data Deletion: You may request deletion of your personal information by contacting us.') }}</li>
+                            <li>{{ _('Cookies: Most web browsers are set to accept cookies by default. You can usually choose to set your browser to remove or reject cookies.') }}</li>
+                            <li>{{ _('Promotional Communications: You can opt out of receiving promotional emails from us by following the instructions in those emails.') }}</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="changes" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('8. Changes to This Privacy Policy') }}</h2>
+                        <p>
+                            {{ _('We may update this Privacy Policy from time to time. If we make material changes, we will notify you by email or through a notice on our Platform prior to the changes becoming effective. We encourage you to review the Privacy Policy whenever you access our Platform to stay informed about our information practices.') }}
+                        </p>
+                    </section>
+                    
+                    <section id="contact-us" class="mb-5">
+                        <h2 class="border-bottom pb-2 mb-4">{{ _('9. Contact Us') }}</h2>
+                        <p>
+                            {{ _('If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:') }}
+                        </p>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <p class="mb-1"><strong>{{ _('Email:') }}</strong> <a href="mailto:privacy@e3rafbaladak.com">privacy@e3rafbaladak.com</a></p>
+                                <p class="mb-1"><strong>{{ _('Address:') }}</strong> {{ _('123 Education Street, Cairo, Egypt') }}</p>
+                                <p class="mb-0"><strong>{{ _('Phone:') }}</strong> +20 123 456 789</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Print Button -->
+            <div class="text-center mb-5">
+                <button class="btn btn-outline-primary" onclick="window.print()">
+                    <i class="fas fa-print me-2"></i>{{ _('Print This Policy') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @media print {
+        .navbar, .footer, .btn, .toc-list {
+            display: none !important;
+        }
+        
+        body {
+            font-size: 12pt;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .card {
+            border: none !important;
+            box-shadow: none !important;
+        }
+        
+        h1 {
+            font-size: 24pt;
+            margin-bottom: 20pt;
+        }
+        
+        h2 {
+            font-size: 18pt;
+            margin-top: 15pt;
+        }
+        
+        h4 {
+            font-size: 14pt;
+        }
+    }
+    
+    .toc-list li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .toc-list a:hover {
+        text-decoration: underline !important;
+    }
+</style>
+{% endblock %}

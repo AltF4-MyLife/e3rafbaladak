@@ -1,0 +1,510 @@
+/* 
+ * e3rafbaladak.com - Main Stylesheet
+ * A national initiative to educate students about their country
+ */
+
+/* ===== General Styles ===== */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--dark-color);
+    background-color: #f5f5f5;
+}
+
+/* RTL Support */
+html[dir="rtl"] body {
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* ===== Layout Components ===== */
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+html[dir="rtl"] .navbar-brand img {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+/* Footer */
+footer {
+    margin-top: 3rem;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--info-color) !important;
+}
+
+/* ===== Home Page ===== */
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+/* Stats Section */
+.stats-section {
+    margin-bottom: 3rem;
+}
+
+.stats-section .card {
+    transition: transform 0.3s;
+}
+
+.stats-section .card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-section .counter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Featured Content */
+.featured-content .card,
+.featured-schools .card,
+.recent-media .card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+}
+
+.featured-content .card:hover,
+.featured-schools .card:hover,
+.recent-media .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.featured-content .card-img-top,
+.recent-media .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+    padding: 4rem 0;
+    margin-top: 3rem;
+    border-radius: 8px;
+}
+
+/* ===== Content Pages ===== */
+
+/* Article List */
+.article-card {
+    margin-bottom: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.article-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Article View */
+.article-header {
+    margin-bottom: 2rem;
+}
+
+.article-meta {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+}
+
+/* Comments */
+.comment {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.comment-meta {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Quiz */
+.quiz-card {
+    margin-bottom: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.question-card {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.question-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+}
+
+.question-body {
+    padding: 1.5rem;
+}
+
+.quiz-result {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.quiz-score {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Media Gallery */
+.media-card {
+    margin-bottom: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.media-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Media Detail */
+.media-detail img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.media-meta {
+    margin: 1rem 0;
+    color: var(--secondary-color);
+}
+
+/* Rating Stars */
+.rating {
+    display: inline-block;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.rating label:before {
+    content: '\2605';
+}
+
+.rating input:checked ~ label,
+.rating input:checked ~ label ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffc107;
+}
+
+/* ===== School Pages ===== */
+
+/* School List */
+.school-card {
+    margin-bottom: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.school-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.school-card .card-img-top {
+    height: 150px;
+    object-fit: contain;
+    padding: 1rem;
+}
+
+/* School Detail */
+.school-header {
+    margin-bottom: 2rem;
+}
+
+.school-logo {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.school-stats {
+    margin-bottom: 2rem;
+}
+
+.school-stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.school-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Activity List */
+.activity-card {
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Volunteer Pages ===== */
+
+/* Volunteer List */
+.volunteer-card {
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.volunteer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Volunteer Detail */
+.volunteer-header {
+    margin-bottom: 2rem;
+}
+
+.volunteer-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.volunteer-info {
+    margin-bottom: 2rem;
+}
+
+.volunteer-contributions {
+    margin-top: 2rem;
+}
+
+/* ===== Admin Dashboard ===== */
+
+/* Dashboard Cards */
+.dashboard-card {
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card .card-body {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-icon {
+    font-size: 3rem;
+    margin-right: 1rem;
+}
+
+html[dir="rtl"] .dashboard-icon {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+.dashboard-value {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* Admin Tables */
+.admin-table th {
+    background-color: var(--light-color);
+}
+
+.admin-table .actions {
+    white-space: nowrap;
+}
+
+/* ===== Forms ===== */
+.form-card {
+    margin-bottom: 2rem;
+}
+
+/* ===== Utilities ===== */
+
+/* Badges */
+.badge-status-pending {
+    background-color: var(--warning-color);
+    color: #212529;
+}
+
+.badge-status-approved {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.badge-status-rejected {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .stats-section .counter {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 3rem 0;
+    }
+    
+    .hero-section .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+    
+    .stats-section .counter {
+        font-size: 1.5rem;
+    }
+}
